@@ -22,7 +22,7 @@ while running:
     screen.fill(white)
     
     #Makes the background
-    background = pygame.image.load('background.jpg')
+    background = pygame.image.load('Pictures/background.jpg')
     background_rect = background.get_rect()
     background_rect.center = (1280 // 2, 720 // 2)
     screen.blit(background, background_rect)
