@@ -12,11 +12,8 @@ square_size = 100
 square_x = 1280 // 2
 square_y = 1
 scroll = 0
-px, py = pygame.mouse.get_pos()
 max_speed = 3
 starting_speed = 3
-jump_strength = -10
-is_jumping = False
 is_mouse_button_pressed = False
 
 speed = starting_speed
@@ -33,25 +30,30 @@ quit_img = pygame.image.load("Pictures/Quit.png").convert_alpha()
 settings_img = pygame.image.load("Pictures/Settings.png").convert_alpha()
 
 #create buttons
-resume_button = Buttons.Button(25, 200, resume_img, 1)
-quit_button = Buttons.Button(25, 400, quit_img, 1)
-settings_button = Buttons.Button(25, 300, settings_img, 1)
+resume_button = Buttons.Button(25, 210, resume_img, 1)
+quit_button = Buttons.Button(25, 410, quit_img, 1)
+settings_button = Buttons.Button(25, 310, settings_img, 1)
 
 #main game loop
+escape_key_pressed = False
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            
+    px, py = pygame.mouse.get_pos()
     
     grav += 0.5
-    speed += grav
+    if game_Paused == False:
+        speed += grav
     
     if speed > max_speed:
         speed = max_speed
-        
-    square_y += speed
+     
+    if game_Paused == False:   
+        square_y += speed
         
     if square_y > 720:
         square_y = 1
@@ -89,8 +91,7 @@ while running:
         screen.blit(background, (i * background_width + scroll, 0) )
         screen.blit(stickman, stickman_rect)
     
-    scroll -= 5  
-    esc_key = 0  
+    scroll -= 5 
     
     if abs(scroll) > background_width:
         scroll = 0
@@ -98,23 +99,28 @@ while running:
     
     #Creates keybinds for the stickman
     keys = pygame.key.get_pressed()
-    mb = pygame.mouse.get_pressed()
-    if game_Paused == False:
-        if mb[0]:  # 0 corresponds to the left mouse button
-            is_mouse_button_pressed = True
-        elif is_mouse_button_pressed:
-            speed += jump_strength  # Apply the jump strength
-            is_jumping = True
-            is_mouse_button_pressed = False
-        if keys[pygame.K_ESCAPE]:
+    if keys[pygame.K_ESCAPE] and not escape_key_pressed:
+        escape_key_pressed = True
+        if game_Paused:
+            game_Paused = False
+        else:
             game_Paused = True
+    elif not keys[pygame.K_ESCAPE]:
+        escape_key_pressed = False
         
     #pause menu
     if game_Paused == True:
         scroll = 0
         screen.blit(pbg, pbg_rect)
         if menu_type == "main":
-            if px and py == 25 and 200:
+            if settings_button.rect.collidepoint(px, py):
+                resumebg_rect.center = settings_button.rect.center
+                screen.blit(ressumebg, resumebg_rect)
+            if quit_button.rect.collidepoint(px, py):
+                resumebg_rect.center = quit_button.rect.center
+                screen.blit(ressumebg, resumebg_rect)
+            if resume_button.rect.collidepoint(px, py):
+                resumebg_rect.center = resume_button.rect.center
                 screen.blit(ressumebg, resumebg_rect)
             if quit_button.draw(screen):
                 running = False
@@ -123,6 +129,9 @@ while running:
             if settings_button.draw(screen):
                 menu_type = "options"
                 pass
+            
+    if game_Paused == False:
+        stickman_rect.center = (square_x, square_y)
             
     # flip() the display to put your work on screen
     pygame.display.flip()
