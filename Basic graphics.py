@@ -1,5 +1,7 @@
-# Example file showing a circle moving on screen
+# Flappy bird
 import pygame, random, math, Buttons
+
+#TODO: add pillars and collision detection, allow the player to flop(cus its flappy bird), upgrades?, cleanup, polish the game, soundtracks, better textures
 
 # pygame setup
 pygame.init()
@@ -57,6 +59,7 @@ while running:
     
     #gets what key is pressed
     keys = pygame.key.get_pressed()
+    mb = pygame.mouse.get_pressed()
             
     #Creates keybinds for the stickman(for now mainly pause menu keybind)
     if keys[pygame.K_ESCAPE] and not escape_key_pressed and Start != True:
@@ -72,6 +75,8 @@ while running:
     if keys[pygame.K_SPACE] and Start == True:
         Start = False
         show_game_over_message = False
+    if mb[pygame.BUTTON_LEFT]:
+        
      
     #getting the mouse position       
     px, py = pygame.mouse.get_pos()
