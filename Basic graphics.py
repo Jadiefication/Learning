@@ -15,12 +15,15 @@ game_over_message_time = None
 #bird variables
 square_x = 1280 // 2
 square_y = 1
-max_speed = 3
-starting_speed = 3
-grav = 0
+max_speed = 2
+starting_speed = 2
 speed = starting_speed
 show_stickman = True
 show_game_over_message = False
+square_y_ = 0
+
+#gravity variables
+grav = 0
 
 #background variables
 scroll = 0
@@ -50,6 +53,7 @@ def draw_text(text, font, text_col, x, y):
 #main game loop
 Start = True
 escape_key_pressed = False
+left_click = False
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -75,8 +79,15 @@ while running:
     if keys[pygame.K_SPACE] and Start == True:
         Start = False
         show_game_over_message = False
-    if mb[pygame.BUTTON_LEFT]:
-        
+    if mb[0] and not game_Paused and Start != True and not left_click:
+        left_click = True
+        while True:
+            square_y_ -= 1
+            if square_y_ <= -75:
+                square_y += square_y_
+                break
+    elif not mb[0]:
+        left_click = False
      
     #getting the mouse position       
     px, py = pygame.mouse.get_pos()
@@ -87,8 +98,8 @@ while running:
         speed += grav
     if speed > max_speed:
         speed = max_speed
-    if game_Paused == False:   
-        square_y += speed 
+    if game_Paused == False:
+        square_y += speed
         
     #makes the pause background
     pbg = pygame.image.load("Pictures/Pause_Background.png")
