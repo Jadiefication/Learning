@@ -1,22 +1,23 @@
 # Flappy bird
 import pygame, random, math, Buttons
 
-#TODO: add pillars and collision detection, allow the player to flop(cus its flappy bird), upgrades?, cleanup, polish the game, soundtracks, better textures
+#TODO: add pillars and collision detection, allow the player to flop(cus its flappy bird), upgrades?, cleanup, polish the game, soundtracks, better textures, make the game playable in all resolutions
 
 # pygame setup
 pygame.init()
 dt = 0
-screen = pygame.display.set_mode((1280, 720))
+size = pygame.display.get_desktop_sizes()
+screen = pygame.display.set_mode((size[1]))
 clock = pygame.time.Clock()
 running = True
-start_time = pygame.time.get_ticks()
 game_over_message_time = None
+w, h = pygame.display.get_surface().get_size()
 
 #bird variables
 square_x = 1280 // 2
 square_y = 1
-max_speed = 2
-starting_speed = 2
+max_speed = 3
+starting_speed = 3
 speed = starting_speed
 show_stickman = True
 show_game_over_message = False
@@ -24,6 +25,7 @@ square_y_ = 0
 
 #gravity variables
 grav = 0
+jump = False
 
 #background variables
 scroll = 0
@@ -49,6 +51,12 @@ settings_button = Buttons.Button(25, 310, settings_img, 1)
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
+    
+def waiting(cooldown):
+    cooldown += 1
+    if Start == True: 
+        cooldown = 0
+    return cooldown
 
 #main game loop
 Start = True
@@ -81,11 +89,10 @@ while running:
         show_game_over_message = False
     if mb[0] and not game_Paused and Start != True and not left_click:
         left_click = True
-        while True:
-            square_y_ -= 1
-            if square_y_ <= -75:
-                square_y += square_y_
-                break
+        if jump and cooldown == 0:
+            jump = False
+        else:
+            jump = True        
     elif not mb[0]:
         left_click = False
      
@@ -99,50 +106,44 @@ while running:
     if speed > max_speed:
         speed = max_speed
     if game_Paused == False:
-        square_y += speed
-        
+        if jump == False:
+           square_y += speed
+           cooldown = 0
+        else:
+            square_y -= 3
+            cooldown = waiting(cooldown)
+            if cooldown >= 30:
+                jump = False
+
+            
     #makes the pause background
     pbg = pygame.image.load("Pictures/Pause_Background.png")
     pbg_rect = pbg.get_rect()
-    pbg_rect.center = (1280 // 2, 720 // 2)
+    pbg_rect.center = (w, h)
     
     #makes the pause screen better
     ressumebg = pygame.image.load("Pictures/Play_Background.png").convert_alpha()
     resumebg_rect = ressumebg.get_rect()
     resumebg_rect.center = (25, 200)
     
+    #prepares the background
+    background = pygame.image.load("Pictures/background.jpg") 
+    background = pygame.transform.scale(background, (w, h))
+    background_aspect_ratio = background.get_width() / background.get_height()
+    
     #prepare's the stickman    
     stlocation = "Pictures/stickman.png"
     stickman = pygame.image.load(stlocation)
     stickman_rect = stickman.get_rect()
-    stickman_rect.center = (square_x, square_y)
-            
-    #prepare's the background
-    bglocation = "Pictures/background.jpg"                          
-    background = pygame.image.load(bglocation)
+    stickman_rect.center = (square_x, square_y)   
     
-    #calculates how many background i need to fill the background + fills the background
-    background_width = background.get_width()
-    tiles = math.ceil(1280 / background_width) + 1
+    #calculates how many background i need to fill the background
+    background_height = h  # Use the screen height as the new background height
+    background_width = int(background_height * background_aspect_ratio)
+    background = pygame.transform.scale(background, (background_width, background_height))
+    tiles = math.ceil(w / background_width) + 1
     
     if Start != True:
-        #uses the gravity
-        grav += 0.5
-        if game_Paused == False:
-            speed += grav
-        if speed > max_speed:
-            speed = max_speed
-        if game_Paused == False:   
-            square_y += speed
-        if square_y > 720:
-            Start = True
-        
-        #prepare's the stickman    
-        stlocation = "Pictures/stickman.png"
-        stickman = pygame.image.load(stlocation)
-        stickman_rect = stickman.get_rect()
-        stickman_rect.center = (square_x, square_y)
-            
         #prepare's the background
         bglocation = "Pictures/background.jpg"                          
         background = pygame.image.load(bglocation)
@@ -156,11 +157,18 @@ while running:
         scroll -= 5 
         if abs(scroll) > background_width:
             scroll = 0
+            
+        #checks bird y position
+        if square_y >= 720:
+            Start = True
+        if square_y <= 0:
+            square_y = 1
+            jump = False
     
-        
     #pause menu
     if game_Paused == True:
         scroll = 0
+        jump = False
         screen.blit(pbg, pbg_rect)
         if menu_type == "main":
             if settings_button.rect.collidepoint(px, py):
