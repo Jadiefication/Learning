@@ -1,5 +1,8 @@
 while True:
-  x = float(input("What is the first number "))
+  try:
+    x = float(input("What is the first number "))
+  except ValueError:
+     print("Please enter a number")
   way = input("What is the symbol: ")
   if way == "*":
       y = float(input("What is the second number: "))

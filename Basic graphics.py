@@ -7,7 +7,7 @@ import pygame, random, math, Buttons
 pygame.init()
 dt = 0
 size = pygame.display.get_desktop_sizes()
-screen = pygame.display.set_mode((size[1]))
+screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 game_over_message_time = None
@@ -119,7 +119,7 @@ while running:
     #makes the pause background
     pbg = pygame.image.load("Pictures/Pause_Background.png")
     pbg_rect = pbg.get_rect()
-    pbg_rect.center = (w, h)
+    pbg_rect.center = (w // 2, h // 2)
     
     #makes the pause screen better
     ressumebg = pygame.image.load("Pictures/Play_Background.png").convert_alpha()
@@ -128,8 +128,6 @@ while running:
     
     #prepares the background
     background = pygame.image.load("Pictures/background.jpg") 
-    background = pygame.transform.scale(background, (w, h))
-    background_aspect_ratio = background.get_width() / background.get_height()
     
     #prepare's the stickman    
     stlocation = "Pictures/stickman.png"
@@ -138,10 +136,8 @@ while running:
     stickman_rect.center = (square_x, square_y)   
     
     #calculates how many background i need to fill the background
-    background_height = h  # Use the screen height as the new background height
-    background_width = int(background_height * background_aspect_ratio)
-    background = pygame.transform.scale(background, (background_width, background_height))
-    tiles = math.ceil(w / background_width) + 1
+    background_width = background.get_width()
+    tiles = math.ceil(1280 / background_width) + 1
     
     if Start != True:
         #prepare's the background
