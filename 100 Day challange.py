@@ -1,20 +1,31 @@
+import unittest
+from math import factorial
 
-def mergesort(left, right):
-    result = []
-    i, j = 0, 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-    result += left[i:]
-    result += right[j:]
-    return result
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+    
+class TestFactorial(unittest.TestCase):
 
-#write me tests
+    def test_zero(self): 
+        self.assertEqual(factorial(0), 1)
 
-def test_mergesort():
-    assert mergesort([1,2,3,4,5,6,7,8,9,10], [1,2,3,4,5,6,7,8,9,10]) == [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
-    assert mergesort([1,2,3,4,5,6,7,8,9,10], [1,2,3,4,5,6,7,8,9,10]) == [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
+    def test_positive(self): 
+        self.assertEqual(factorial(5), 120)
+
+    def test_negative(self): 
+        with self.assertRaises(ValueError): factorial(-5)
+
+    def test_float(self): 
+        with self.assertRaises(TypeError): factorial(5.5)
+
+    def test_string(self): 
+        with self.assertRaises(TypeError): factorial("five") [1]
+
+    def test_large_number(self): 
+        self.assertEqual(factorial(15), 1307674368000)
+
+if __name__ == '__main__':
+  unittest.main()
