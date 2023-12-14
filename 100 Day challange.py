@@ -1,31 +1,121 @@
-import unittest
-from math import factorial
+from abc import ABC, abstractmethod
+import tkinter as tk
+from tkinter import ttk
 
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n-1)
+# University interface
+class UniversityInterface(ABC):
+
+  @abstractmethod
+  def add_course(self, course_name):
+    pass
+
+  @abstractmethod
+  def enroll_student(self, student, course_name):
+    pass
+
+  @abstractmethod
+  def hire_professor(self, professor, course_name):
+    pass
+
+  @abstractmethod
+  def print_stats(self):
+    pass
+
+
+# University and related classes  
+class University(UniversityInterface):
+
+  def __init__(self, name, location):
+    self.name = name
+    self.location = location
+    self.courses = {}
+
+  def add_course(self, course_name):
+    self.courses[course_name] = []
+
+  def enroll_student(self, student, course_name):
+    if course_name in self.courses:
+      self.courses[course_name].append(student)
+
+  def hire_professor(self, professor, course_name):
+    if course_name in self.courses:
+      self.courses[course_name].append(professor)
+
+  def print_stats(self):
+    print(f"University: {self.name}")
+    print(f"Location: {self.location}")
+    print("Courses:")
+    for course, people in self.courses.items():
+      print(f"- {course}: {len(people)} people")
+
+
+class Student:
+
+  def __init__(self, name, year):
+    self.name = name
+    self.year = year
+
+
+class Professor:
+
+  def __init__(self, name, department):
+    self.name = name
+    self.department = department
+
+
+# GUI
+class UniversityGUI:
+
+  def __init__(self, master):
+    self.master = master
+    self.uni = University("Python University", "Boston")
+
+    # Frames
+    courses_frame = ttk.LabelFrame(master, text="Courses")
+    courses_frame.grid(row=0, column=0, padx=10, pady=10)
+
+    students_frame = ttk.LabelFrame(master, text="Students")
+    students_frame.grid(row=0, column=1, padx=10, pady=10)
+
+    professors_frame = ttk.LabelFrame(master, text="Professors")  
+    professors_frame.grid(row=0, column=2, padx=10, pady=10)
+
+    # Course widgets
+    courses_label = ttk.Label(courses_frame, text="Add Course:")
+    courses_label.grid(row=0, column=0)
     
-class TestFactorial(unittest.TestCase):
+    self.courses_entry = ttk.Entry(courses_frame)
+    self.courses_entry.grid(row=0, column=1)
+    
+    add_course_btn = ttk.Button(courses_frame, text="Add Course", command=self.add_course)
+    add_course_btn.grid(row=0, column=2)
 
-    def test_zero(self): 
-        self.assertEqual(factorial(0), 1)
+    # Student widgets
+    name_label = ttk.Label(students_frame, text="Student Name:")    
+    name_label.grid(row=0, column=0)
+    
+    self.name_entry = ttk.Entry(students_frame)
+    self.name_entry.grid(row=0, column=1)
+    
+    enroll_btn = ttk.Button(students_frame, text="Enroll", command=self.enroll_student)
+    enroll_btn.grid(row=0, column=2)
 
-    def test_positive(self): 
-        self.assertEqual(factorial(5), 120)
+    # Professor widgets
+    
+    # Styling
+    style = ttk.Style()
+    style.theme_use("clam")
 
-    def test_negative(self): 
-        with self.assertRaises(ValueError): factorial(-5)
+  def add_course(self):
+    course_name = self.courses_entry.get()  
+    self.uni.add_course(course_name)
 
-    def test_float(self): 
-        with self.assertRaises(TypeError): factorial(5.5)
+  def enroll_student(self):
+    name = self.name_entry.get()
+    student = Student(name, "Freshman")
+    self.uni.enroll_student(student, "Python 101")
+    
 
-    def test_string(self): 
-        with self.assertRaises(TypeError): factorial("five") [1]
-
-    def test_large_number(self): 
-        self.assertEqual(factorial(15), 1307674368000)
-
-if __name__ == '__main__':
-  unittest.main()
+root = tk.Tk()
+app = UniversityGUI(root)
+root.mainloop()
