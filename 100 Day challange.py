@@ -11,7 +11,10 @@ label.pack(padx=10, pady=10)
 textbox = tk.Entry(root, font=("Arial", 24), show=False)
 textbox.pack()
 
-button = tk.Button(root, text="Click me!", font=("Arial", 24))
+frame = tk.Frame(root)
+frame.columnconfigure(0, weight=1)
+
+button = tk.Button(frame, text="Click me")
 button.pack()
 
 root.mainloop()
