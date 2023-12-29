@@ -13,8 +13,10 @@ textbox.pack()
 
 frame = tk.Frame(root)
 frame.columnconfigure(0, weight=1)
+frame.columnconfigure(1, weight=1)
+frame.columnconfigure(2, weight=1)
 
 button = tk.Button(frame, text="Click me")
-button.pack()
+button.grid(row=0, column=0)
 
 root.mainloop()
