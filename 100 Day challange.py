@@ -15,15 +15,13 @@ class App:
     self.check = tk.Checkbutton(self.root, text="Check me", variable=self.check_state, command=self.show_message)
     self.check.pack()
     
-    self.button = tk.Button(self.root, text="OK")
+    self.button = tk.Button(self.root, text="OK", command=self.show_message)
     self.button.pack()
     
     self.root.mainloop()
   
   def show_message(self):
-    print("Hello World")
-    
-App()
+    print(self.check_state.get())
 
 if __name__ == "__main__":
   app = App()
