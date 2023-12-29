@@ -21,7 +21,8 @@ class App:
     self.root.mainloop()
   
   def show_message(self):
-    print(self.check_state.get())
+    if self.check_state.get() == 0:
+      print(self.textbox.get("1.0", "end-1c"))
 
 if __name__ == "__main__":
   app = App()
