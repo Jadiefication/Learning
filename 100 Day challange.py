@@ -12,7 +12,7 @@ class App:
     
     self.check_state = tk.IntVar()
     
-    self.check = tk.Checkbutton(self.root, text="Check me", variable=self.check_state, command=self.show_message)
+    self.check = tk.Checkbutton(self.root, text="Check me", variable=self.check_state)
     self.check.pack()
     
     self.button = tk.Button(self.root, text="OK", command=self.show_message)
