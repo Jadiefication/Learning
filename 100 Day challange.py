@@ -2,8 +2,19 @@ import tkinter as tk
 from tkinter import messagebox
 
 class App:
+  
   def __init__(self):
+    
     self.root = tk.Tk()
+    
+    self.menubar = tk.Menu(self.root)
+    
+    self.filemenu = tk.Menu(self.menubar, tearoff=0)
+    self.filemenu.add_command(label="Close", command=exit)
+    
+    self.menubar.add_cascade(menu=self.filemenu, label="File")
+    
+    self.root.config(menu=self.menubar)
     
     self.text = tk.Label(self.root, text="Your message")
     self.text.pack()
