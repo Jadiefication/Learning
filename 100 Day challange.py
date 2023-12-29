@@ -20,6 +20,8 @@ class App:
     self.button = tk.Button(self.root, text="OK", command=self.show_message)
     self.button.pack()
     
+    self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+    
     self.root.mainloop()
   
   def show_message(self):
@@ -31,6 +33,10 @@ class App:
   def key_press(self, event):
     if event.state == 12 and event.keysym == "Return":
       self.show_message()
+      
+  def on_closing(self):
+    messagebox.showinfo(title="Message", message="You are dead to me")
+    self.root.destroy()
 
 if __name__ == "__main__":
   app = App()
