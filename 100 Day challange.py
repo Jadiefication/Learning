@@ -9,6 +9,9 @@ label = tk.Label(root, text="test", font=("Arial", 24))
 label.pack(padx=10, pady=10)
 
 textbox = tk.Entry(root, font=("Arial", 24), show=False)
-textbox.pack(padx=20)
+textbox.pack()
+
+button = tk.Button(root, text="Click me!", font=("Arial", 24))
+button.pack()
 
 root.mainloop()
