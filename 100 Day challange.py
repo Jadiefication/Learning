@@ -35,8 +35,8 @@ class App:
       self.show_message()
       
   def on_closing(self):
-    messagebox.showinfo(title="Message", message="You are dead to me")
-    self.root.destroy()
+    if messagebox.askyesno(title="Quit?", message="Are you sure you want to quit?"):
+      self.root.destroy()
 
 if __name__ == "__main__":
   app = App()
