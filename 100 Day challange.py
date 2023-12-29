@@ -29,7 +29,8 @@ class App:
       messagebox.showinfo(title="Message", message=self.textbox.get("1.0", "end-1c"))
       
   def key_press(self, event):
-    print(event)
+    if event.state == 12 and event.keysym == "Return":
+      self.show_message()
 
 if __name__ == "__main__":
   app = App()
