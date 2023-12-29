@@ -33,6 +33,8 @@ class App:
     self.button = tk.Button(self.root, text="OK", command=self.show_message)
     self.button.pack()
     
+    self.clearbutton = tk.Button(self.root, text="Clear", command=self.clear_textbox)
+    
     self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
     
     self.root.mainloop()
@@ -54,3 +56,4 @@ class App:
 if __name__ == "__main__":
   app = App()
     
+#TODO:Make a calculator
