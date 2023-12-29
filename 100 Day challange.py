@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 class App:
   def __init__(self):
@@ -23,6 +24,8 @@ class App:
   def show_message(self):
     if self.check_state.get() == 0:
       print(self.textbox.get("1.0", "end-1c"))
+    else:
+      messagebox.showinfo(title="Message", message=self.textbox.get("1.0", "end-1c"))
 
 if __name__ == "__main__":
   app = App()
