@@ -18,5 +18,6 @@ frame.columnconfigure(2, weight=1)
 
 button = tk.Button(frame, text="Click me", font=("Arial", 24))
 button.grid(row=0, column=0, sticky="nsew")
+frame.pack(fill="x")
 
 root.mainloop()
