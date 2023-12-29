@@ -11,6 +11,8 @@ class App:
     
     self.filemenu = tk.Menu(self.menubar, tearoff=0)
     self.filemenu.add_command(label="Close", command=self.on_closing)
+    self.filemenu.add_separator()
+    self.filemenu.add_command(label="Exit", command=exit)
     
     self.menubar.add_cascade(menu=self.filemenu, label="File")
     
