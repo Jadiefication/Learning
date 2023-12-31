@@ -74,8 +74,8 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.textbox = tk.Text(self.rt, height=0.5, width=10)
-    self.textbox.grid()
+    self.textbox = tk.Text(self.rt, height=1, width=10)
+    self.textbox.pack()
     
     for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
