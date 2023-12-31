@@ -60,6 +60,11 @@ class App:
     
 #TODO:Make a calculator
 
+def button(text: str, row: int, column: int, anchor: str="center"):
+  button = tk.Button(text=text)
+  button.grid(row=row, column=column)
+  button.pack(anchor=anchor)
+
 class Calculator:
   
   def __init__(self):
@@ -76,9 +81,7 @@ class Calculator:
     self.rt.grid_rowconfigure(4, weight=1)
     self.rt.grid_rowconfigure(5, weight=1)
     
-    self.button = tk.Button(self.rt, text="1")
-    self.button.grid(row=0, column=0)
-    self.button.pack(anchor="nwse")
+    button("1" ,0, 0, anchor="nw")
     
     self.rt.mainloop()
   
