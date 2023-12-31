@@ -62,7 +62,7 @@ class App:
 
 class Calculator:
   
-  def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: Any=None):
+  def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
     button = tk.Button(self.rt, text=text, width=width, height=height, command=command)
     button.grid(row=row, column=column, sticky=anchor)
 
@@ -79,7 +79,7 @@ class Calculator:
       self.rt.grid_columnconfigure(i, weight=0)
     
     for i in range(0, 3):
-      self.button(i+1 ,0, i, anchor="nw", width=10, height=2)
+      self.button(i+1 ,0, i, anchor="nw", width=10, height=2, command=lambda: self.button_click(i+1))
     for j in range(0, 3):
       self.button(j+4, 1, j, anchor="nw", width=10, height=2)
     for k in range(0, 3):
