@@ -67,6 +67,19 @@ class Calculator:
     
     self.rt.geometry("500x800")
     
+    self.rt.title("Calculator")
+    
+    self.rt.grid_rowconfigure(0, weight=1)
+    self.rt.grid_rowconfigure(1, weight=1)
+    self.rt.grid_rowconfigure(2, weight=1)
+    self.rt.grid_rowconfigure(3, weight=1)
+    self.rt.grid_rowconfigure(4, weight=1)
+    self.rt.grid_rowconfigure(5, weight=1)
+    
+    self.button = tk.Button(self.rt, text="1")
+    self.button.grid(row=0, column=0)
+    self.button.pack(anchor="nwse")
+    
     self.rt.mainloop()
   
 if __name__ == "__main__":
