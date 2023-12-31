@@ -70,7 +70,7 @@ class Calculator:
       self.textbox.config(text=current_text + str(number))
   
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
-    button = tk.Button(self.rt, text=text, width=width, height=height, command=command, font="Arial 12 bold")
+    button = tk.Button(self.rt, text=text, width=width, height=height, command=command, font="Arial 12 bold", background="dark gray", foreground="white")
     button.grid(row=row, column=column, sticky=anchor)
   
   def __init__(self):
