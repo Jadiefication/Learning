@@ -74,12 +74,9 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.rt.grid_rowconfigure(0, weight=1)
-    self.rt.grid_rowconfigure(1, weight=1)
-    self.rt.grid_rowconfigure(2, weight=1)
-    self.rt.grid_rowconfigure(3, weight=1)
-    self.rt.grid_rowconfigure(4, weight=1)
-    self.rt.grid_rowconfigure(5, weight=1)
+    for i in range(0,3 ):
+      self.rt.grid_rowconfigure(i, weight=1)
+      self.rt.grid_columnconfigure(i, weight=1)
     
     button("1" ,0, 0, anchor="nw", width=10, height=2)
     button("2" ,0, 1, anchor="nw", width=10, height=2)
