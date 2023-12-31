@@ -82,8 +82,14 @@ class Calculator:
       self.rt.grid_columnconfigure(i, weight=0)
     
     self.button("1" ,1, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(1)))
-    self.button("4", 2, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(j+4)))
-    self.button("7", 3, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(k+7)))
+    self.button("2" ,1, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(2)))
+    self.button("3" ,1, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(3)))
+    self.button("4", 2, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(4)))
+    self.button("5" ,2, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(5)))
+    self.button("6" ,2, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(6)))
+    self.button("7", 3, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(7)))
+    self.button("8" ,3, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(8)))
+    self.button("9" ,3, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(9)))
     self.button("0", 4, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(0)))
     
     self.rt.mainloop()
