@@ -74,20 +74,20 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.textbox = tk.Text(self.rt, height=1, width=30)
+    self.textbox = tk.Text(self.rt, height=0.5, width=10)
     self.textbox.grid()
     
-    for i in range(0, 3):
+    for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
       self.rt.grid_columnconfigure(i, weight=0)
     
     for i in range(0, 3):
-      self.button(i+1 ,0, i, anchor="nw", width=10, height=2)
+      self.button(i+1 ,1, i, anchor="nw", width=10, height=2)
     for j in range(0, 3):
-      self.button(j+4, 1, j, anchor="nw", width=10, height=2)
+      self.button(j+4, 2, j, anchor="nw", width=10, height=2)
     for k in range(0, 3):
-      self.button(k+7, 2, k, anchor="nw", width=10, height=2)
-    self.button("0", 3, 1, anchor="nw", width=10, height=2)
+      self.button(k+7, 3, k, anchor="nw", width=10, height=2)
+    self.button("0", 4, 1, anchor="nw", width=10, height=2)
     
     self.rt.mainloop()
   
