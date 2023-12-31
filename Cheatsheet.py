@@ -84,6 +84,7 @@ class Calculator:
       self.button(j+4, 1, j, anchor="nw", width=10, height=2)
     for k in range(0, 3):
       self.button(k+7, 2, k, anchor="nw", width=10, height=2)
+    self.button("0", 3, 1, anchor="nw", width=10, height=2)
     
     self.rt.mainloop()
   
