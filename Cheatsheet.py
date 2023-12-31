@@ -74,7 +74,7 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.textbox = tk.Label(self.rt, height=1, width=20)
+    self.textbox = tk.Label(self.rt, height=1, width=20, text="0")
     self.textbox.grid(columnspan=4, column=0, row=0, sticky="nsew")
     
     for i in range(0, 4):
@@ -91,6 +91,7 @@ class Calculator:
     self.button("2" ,3, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(2)))
     self.button("3" ,3, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(3)))
     self.button("0", 4, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(0)))
+    self.button("," ,4, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(",")))
     
     self.rt.mainloop()
   
