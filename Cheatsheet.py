@@ -74,7 +74,7 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    for i in range(0,3 ):
+    for i in range(0, 3):
       self.rt.grid_rowconfigure(i, weight=1)
       self.rt.grid_columnconfigure(i, weight=1)
     
