@@ -81,8 +81,16 @@ class Calculator:
     self.rt.grid_rowconfigure(4, weight=1)
     self.rt.grid_rowconfigure(5, weight=1)
     
-    for i in range(0, 9):
-      button("1" ,i, 0, anchor="nw", width=10, height=2)
+    button("1" ,0, 0, anchor="nw", width=10, height=2)
+    button("2" ,0, 1, anchor="nw", width=10, height=2)
+    button("3" ,0, 2, anchor="nw", width=10, height=2)
+    button("4" ,1, 0, anchor="nw", width=10, height=2)
+    button("5" ,1, 1, anchor="nw", width=10, height=2)
+    button("6" ,1, 2, anchor="nw", width=10, height=2)
+    button("7" ,2, 0, anchor="nw", width=10, height=2)
+    button("8" ,2, 1, anchor="nw", width=10, height=2)
+    button("9" ,2, 2, anchor="nw", width=10, height=2)
+    button("0" ,3, 0, anchor="nw", width=10, height=2)    
     
     self.rt.mainloop()
   
