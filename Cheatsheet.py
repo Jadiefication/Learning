@@ -82,7 +82,7 @@ class Calculator:
       self.rt.grid_columnconfigure(i, weight=0)
     
     for i in range(0, 3):
-      self.button(i+1 ,1, i, anchor="nw", width=10, height=2)
+      self.button(i+1 ,1, i, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(i+1)))
     for j in range(0, 3):
       self.button(j+4, 2, j, anchor="nw", width=10, height=2)
     for k in range(0, 3):
