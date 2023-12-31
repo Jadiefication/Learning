@@ -62,6 +62,9 @@ class App:
 
 class Calculator:
   
+  def clear(self):
+    self.textbox.delete("1.0", "end")
+  
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
     button = tk.Button(self.rt, text=text, width=width, height=height, command=command)
     button.grid(row=row, column=column, sticky=anchor)
@@ -82,7 +85,7 @@ class Calculator:
       self.rt.grid_columnconfigure(i, weight=0)
     
     self.button("7" ,1, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(7)))
-    self.button("8" ,1, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(8)))
+    self.button("8" ,1, 1, anchor="nw", width=10, height=2, command=lambda: self.clear and self.textbox.config(text=self.textbox.cget("text") + str(8)))
     self.button("9" ,1, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(9)))
     self.button("4", 2, 0, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(4)))
     self.button("5" ,2, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(5)))
