@@ -61,6 +61,12 @@ class App:
 #TODO:Make a calculator
 
 class Calculator:
+
+  def on_hover(self, event):
+      self.config(background="lightblue")  # Change color on hover
+
+  def on_leave(self, event):
+      self.config(background="green")  # Restore original color
   
   def number_clicked(self, number: int):
     current_text = self.textbox.cget("text")
@@ -76,6 +82,9 @@ class Calculator:
   def __init__(self):
     self.rt = tk.Tk()
     
+    self.bind("<Enter>", self.on_hover)
+    self.bind("<Leave>", self.on_leave)
+  
     self.rt.geometry("500x800")
     
     self.rt.title("Calculator")
