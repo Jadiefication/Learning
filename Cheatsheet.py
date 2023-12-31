@@ -70,7 +70,7 @@ class Calculator:
       self.textbox.config(text=current_text + str(number))
   
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
-    button = tk.Button(self.rt, text=text, width=width, height=height, command=command)
+    button = tk.Button(self.rt, text=text, width=width, height=height, command=command, font="Arial 12 bold")
     button.grid(row=row, column=column, sticky=anchor)
   
   def __init__(self):
@@ -80,7 +80,7 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.textbox = tk.Label(self.rt, height=1, width=20, text="0")
+    self.textbox = tk.Label(self.rt, height=1, width=20, text="0", font="Arial 12 bold")
     self.textbox.grid(columnspan=4, column=0, row=0, sticky="nsew")
     
     for i in range(0, 4):
