@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from typing import Any
+import customtkinter
 
 class App:
   
@@ -61,12 +62,6 @@ class App:
 #TODO:Make a calculator
 
 class Calculator:
-
-  def on_hover(self, event):
-      self.config(background="lightblue")  # Change color on hover
-
-  def on_leave(self, event):
-      self.config(background="green")  # Restore original color
   
   def number_clicked(self, number: int):
     current_text = self.textbox.cget("text")
@@ -80,10 +75,11 @@ class Calculator:
     button.grid(row=row, column=column, sticky=anchor)
   
   def __init__(self):
+    
     self.rt = tk.Tk()
     
-    self.bind("<Enter>", self.on_hover)
-    self.bind("<Leave>", self.on_leave)
+    customtkinter.set_appearance_mode("System")
+    customtkinter.set_default_color_theme("blue")
   
     self.rt.geometry("500x800")
     
@@ -113,33 +109,3 @@ class Calculator:
 if __name__ == "__main__":
   calculator = Calculator()
   
-class CustomButton(tk.Button):
-    def __init__(self, master=None, **kwargs):
-        super().__init__(master, **kwargs)
-        self.config(
-            relief=tk.FLAT,  # Remove button relief
-            bd=0,  # Remove border
-            highlightthickness=0,  # Remove highlight
-            padx=10,  # Add horizontal padding
-            pady=5,  # Add vertical padding
-            font=("Arial", 12),  # Set font
-            foreground="white",  # Text color
-            background="orange",  # Background color
-        )
-        # Bind events
-        self.bind("<Enter>", self.on_hover)
-        self.bind("<Leave>", self.on_leave)
-
-    def on_hover(self, event):
-        self.config(background="lightblue")  # Change color on hover
-
-    def on_leave(self, event):
-        self.config(background="green")  # Restore original color
-
-# Create the main window
-root = tk.Tk()
-root.title("Custom Button Example")
-
-# Create a custom button
-custom_button = CustomButton(root, text="Custom Button")
-custom_button.pack(pady=20)
