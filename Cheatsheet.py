@@ -62,7 +62,7 @@ class App:
 
 class Calculator:
   
-  def number_clicked(self, number):
+  def number_clicked(self, number: int):
     current_text = self.textbox.cget("text")
     if current_text == "0":
       self.textbox.config(text=str(number))
@@ -72,7 +72,6 @@ class Calculator:
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
     button = tk.Button(self.rt, text=text, width=width, height=height, command=command)
     button.grid(row=row, column=column, sticky=anchor)
-
   
   def __init__(self):
     self.rt = tk.Tk()
