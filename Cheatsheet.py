@@ -84,10 +84,10 @@ class Calculator:
     for i in range(0, 3):
       self.button(i+1 ,1, i, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(i+1)))
     for j in range(0, 3):
-      self.button(j+4, 2, j, anchor="nw", width=10, height=2)
+      self.button(j+4, 2, j, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(j+4)))
     for k in range(0, 3):
-      self.button(k+7, 3, k, anchor="nw", width=10, height=2)
-    self.button("0", 4, 1, anchor="nw", width=10, height=2)
+      self.button(k+7, 3, k, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(k+7)))
+    self.button("0", 4, 1, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(0)))
     
     self.rt.mainloop()
   
