@@ -80,6 +80,8 @@ class Calculator:
     
     for i in range(0, 3):
       self.button(i+1 ,0, i, anchor="nw", width=10, height=2)
+    for j in range(0, 3):
+      self.button(j+4, 1, j, anchor="nw", width=10, height=2)
     
     self.rt.mainloop()
   
