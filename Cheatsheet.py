@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from typing import Any
 
 class App:
   
@@ -33,7 +34,8 @@ class App:
     self.button = tk.Button(self.root, text="OK", command=self.show_message)
     self.button.pack()
     
-    self.clearbutton = tk.Button(self.root, text="Clear", command=self.clear_textbox)
+    self.clearbutton = tk.Button(self.root, text="Clear", command=self.clear)
+    self.clearbutton.pack()
     
     self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
     
@@ -52,8 +54,20 @@ class App:
   def on_closing(self):
     if messagebox.askyesno(title="Quit?", message="Are you sure you want to quit?"):
       self.root.destroy()
-
-if __name__ == "__main__":
-  app = App()
+      
+  def clear(self):
+    self.textbox.delete("1.0", "end")
     
 #TODO:Make a calculator
+
+class Calculator:
+  
+  def __init__(self):
+    self.rt = tk.Tk()
+    
+    self.rt.geometry("500x800")
+    
+    self.rt.mainloop()
+  
+if __name__ == "__main__":
+  calculator = Calculator()
