@@ -62,8 +62,8 @@ class App:
 
 class Calculator:
   
-  def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1):
-    button = tk.Button(self.rt, text=text, width=width, height=height)
+  def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: Any=None):
+    button = tk.Button(self.rt, text=text, width=width, height=height, command=command)
     button.grid(row=row, column=column, sticky=anchor)
 
   
