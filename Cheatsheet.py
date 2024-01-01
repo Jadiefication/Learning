@@ -6,11 +6,11 @@ import customtkinter as CTk
 class Calculator:
   
   def number_clicked(self, number: int):
-    current_text = self.textbox.cget("text")
+    current_text = self.text.cget("text")
     if current_text == "0":
-      self.textbox.config(text=str(number))
+      self.text.configure(text=str(number))
     else:
-      self.textbox.config(text=current_text + str(number))
+      self.text.configure(text=current_text + str(number))
   
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
     button = CTk.CTkButton(self.rt, text=text, width=width, height=height, command=command)
@@ -44,7 +44,7 @@ class Calculator:
     self.button("2" ,3, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(2))
     self.button("3" ,3, 2, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(3))
     self.button("0", 4, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(0))
-    self.button("," ,4, 2, anchor="nw", width=10, height=2, command=lambda: self.textbox.config(text=self.textbox.cget("text") + str(",")))
+    self.button("," ,4, 2, anchor="nw", width=10, height=2, command=lambda: self.text.configure(text=self.text.cget("text") + str(",")))
     
     self.rt.mainloop()
   
