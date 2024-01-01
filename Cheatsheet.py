@@ -27,8 +27,8 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.textbox = CTk.Label(self.rt, height=1, width=20, text="0", font="Arial 12 bold")
-    self.textbox.grid(columnspan=4, column=0, row=0, sticky="nsew")
+    self.text = CTk.CTkLabel(self.rt, height=1, width=20, text="0", font="Arial 12 bold")
+    self.text.grid(columnspan=4, column=0, row=0, sticky="nsew")
     
     for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
