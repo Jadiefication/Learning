@@ -27,24 +27,24 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.text = CTk.CTkLabel(self.rt, height=1, width=20, text="0")
+    self.text = CTk.CTkLabel(self.rt, height=5, width=20, text="0")
     self.text.grid(columnspan=4, column=0, row=0, sticky="nsew")
     
     for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
       self.rt.grid_columnconfigure(i, weight=0)
     
-    self.button("7" ,1, 0, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(7))
-    self.button("8" ,1, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(8))
-    self.button("9" ,1, 2, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(9))
-    self.button("4", 2, 0, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(4))
-    self.button("5" ,2, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(5))
-    self.button("6" ,2, 2, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(6))
-    self.button("1", 3, 0, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(1))
-    self.button("2" ,3, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(2))
-    self.button("3" ,3, 2, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(3))
-    self.button("0", 4, 1, anchor="nw", width=10, height=2, command=lambda: self.number_clicked(0))
-    self.button("," ,4, 2, anchor="nw", width=10, height=2, command=lambda: self.text.configure(text=self.text.cget("text") + str(",")))
+    self.button("7" ,1, 0, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(7))
+    self.button("8" ,1, 1, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(8))
+    self.button("9" ,1, 2, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(9))
+    self.button("4", 2, 0, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(4))
+    self.button("5" ,2, 1, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(5))
+    self.button("6" ,2, 2, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(6))
+    self.button("1", 3, 0, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(1))
+    self.button("2" ,3, 1, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(2))
+    self.button("3" ,3, 2, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(3))
+    self.button("0", 4, 1, anchor="nw", width=10, height=10, command=lambda: self.number_clicked(0))
+    self.button("," ,4, 2, anchor="nw", width=10, height=10, command=lambda: self.text.configure(text=self.text.cget("text") + str(",")))
     
     self.rt.mainloop()
   
