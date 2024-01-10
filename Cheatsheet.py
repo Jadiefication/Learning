@@ -13,7 +13,7 @@ class Calculator:
       self.text.configure(text=current_text + str(number))
   
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
-    button = CTk.CTkButton(self.rt, text=text, width=width, height=height, command=command, corner_radius=12)
+    button = CTk.CTkButton(self.rt, text=text, width=width, height=height, command=command)
     button.grid(row=row, column=column, sticky=anchor)
   
   def __init__(self):
