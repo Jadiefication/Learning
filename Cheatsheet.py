@@ -32,7 +32,7 @@ class Calculator:
     
     for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
-      self.rt.grid_columnconfigure(i, weight=0)
+      self.rt.grid_columnconfigure(i, weight=i)
     
     self.button("7" ,1, 0, anchor="nw", width=50, height=50, command=lambda: self.number_clicked(7))
     self.button("8" ,1, 1, anchor="nw", width=50, height=50, command=lambda: self.number_clicked(8))
