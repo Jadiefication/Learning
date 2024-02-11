@@ -13,7 +13,7 @@ class Calculator:
       self.text.configure(text=current_text + str(number))
   
   def button(self, text: str, row: int, column: int, anchor: str="center", width: int=10, height: int=1, command: any=None):
-    button = CTk.CTkButton(self.rt, text=text, width=width, height=height, command=command)
+    button = CTk.CTkButton(self.rt, text=text, width=width, height=height, command=command, corner_radius=10)
     button.grid(row=row, column=column, sticky=anchor)
   
   def __init__(self):
@@ -27,12 +27,12 @@ class Calculator:
     
     self.rt.title("Calculator")
     
-    self.text = CTk.CTkLabel(self.rt, height=5, width=20, text="0")
-    self.text.grid(columnspan=4, column=0, row=0, sticky="nsew")
+    self.text = CTk.CTkLabel(self.rt, height=50, width=50, text="0", font=("Arial", 30))
+    self.text.grid(columnspan=10, column=0, row=0, sticky="nsew")
     
     for i in range(0, 4):
       self.rt.grid_rowconfigure(i, weight=0)
-      self.rt.grid_columnconfigure(i, weight=i)
+      self.rt.grid_columnconfigure(i, weight=0)
     
     self.button("7" ,1, 0, anchor="nw", width=50, height=50, command=lambda: self.number_clicked(7))
     self.button("8" ,1, 1, anchor="nw", width=50, height=50, command=lambda: self.number_clicked(8))

@@ -1,34 +1,226 @@
+<!-- PLEASE DO NOTE: -->
+<!-- This isn't my project it's from a person I've seen -->
+<!-- But in the future, I'ma change everything so I can call it mine -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="HTML, CSS">
-  <meta name="description" content="...">
-  <title>Document</title>
-</head>
-<body class="l">
-  <h1 class="b">The begining of my journey</h1>
-  <h2 class="b">Lorem ipsum dolor sit amet consectetur adipisicing elit. In fuga magni doloribus sapiente reiciendis consequatur porro nam sunt fugit velit veritatis, minus odit deleniti dolore distinctio voluptatibus ipsum libero inventore.</h2>
-  <h3><a class="a" target="_blank" href="https://www.geeksforgeeks.org/top-10-projects-for-beginners-to-practice-html-and-css-skills/">Site that I used to figure out what projects should I make</h3>
-  <a download href="Python photos/code.png" class="b"><img class="photo" src="Python photos/code.png" alt="A picture of html + css code"></a>
-  <h2><a class="a" target="_blank" href="https://github.com/Jadiefication/Idk/blob/main">My github</a></h2>
-  <style>
-    .a{
-      color: white;
-      font-style: italic;
-    }
-    .photo{
-      height: 800px;
-      width: 2800px;
-      object-fit: contain;
-    }
-    .l{
-      background-color: black;
-    }
-    .b{
-      color: white;
-    }
-  </style>
-</body>
+  <head>
+
+    <title>katzdev</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link href="https://fonts.googleapis.com/css?family=NTR" rel='stylesheet' type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <link
+    rel="stylesheet
+    href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  </head>
+
+
+
+  
+  <body>
+
+    <div class="intro">
+      <p class="item-name"><b>Hi, <span         
+        class="name"><a href="https://github.com/katzadoo">@dalictn</a></span> here.</b>
+      <span class="blinking-cursor"><b>|</b></span>
+      </p>
+    
+    <div class="subdiv">
+      <span class="subheading">Web development / Robotics / Software development</span>
+    </div>
+    
+    <div class="divider">
+      <h1 class="about">/ about me</h1>
+    </div>
+    
+    <div class="bio">
+      <p class="item">I am a student and programmer who likes making small stuff in his free time, hoping to make it a full time job eventually. I'm currently interested in fullstack development, robotics, artificial intelligence and more.</p>
+    </div>
+
+    <div class="langsec">
+      <h1 class="about">/ languages</h1>
+      
+      <div class="langs">
+        <p class="item">Some of the languages I   have experience with: </p>
+      
+        <div class="list">
+          <li>Python</li>
+          <li>Java</li>
+          <li>Rust</li>
+          <li>Javascript</li>
+        </div>
+      
+      </div>
+      
+      </div>
+    
+      <div class="links">
+        <a href="https://github.com/katzadoo">
+          <img src="Images/icons8-github-48.png">
+        </a>
+      
+        <a href="https://www.youtube.com/@katzdev/videos">
+          <img src="Images/icons8-youtube-48.png">
+        </a>
+    </div>
+
+    </div>
+    <footer style="text-align: center; padding:5%;">
+      <p class="cp-text">
+          Made with < 3 by me 
+          <br>
+          All rights reserved.©
+      </p>
+
+  </body>
+<style>
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+body {
+  background: #181c21;
+}
+
+
+.intro {
+  font-family: sans-serif;
+  margin-top: 175px;
+}
+
+.bio {
+  display: flex;
+}
+
+
+
+.item {
+  display: flexbox;
+  padding-bottom: 15px;
+  padding-right: 100px;
+
+  
+}
+.item-name {
+  flex: 1;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 60px;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+.name {
+  color: aqua;
+  font-family: Arial, Helvetica, sans-serif;  
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: aqua;
+  }
+}
+
+
+.subheading {
+  font-size: 35px;
+}
+
+
+.subdiv {
+  margin-bottom: 200px;
+}
+
+
+.links {
+  display: flex;
+  margin-left: 275px;
+  margin-right: 275px;
+  justify-content: space-evenly;
+  align-content: center;
+  
+}
+
+
+.about {
+  color: aqua;
+  font-family: 'NTR';
+  border-bottom: 0px;
+  font-weight: 700;
+}
+
+
+li {
+  list-style: square;
+  color: aqua;
+}
+
+.langsec {
+  flex: 1;
+  padding-bottom: 15px;
+}
+
+.divider {
+  color: aqua;
+}
+
+
+a .name {
+  color: aqua;
+}
+
+
+a:link {
+  color: aqua;
+  text-decoration: none;
+}
+
+
+a:visited { 
+  color: aqua;
+  text-decoration: none; }
+
+
+a:hover { 
+  color: aqua;
+  text-decoration: none;
+}
+
+
+a:active {
+  color: aqua;
+  text-decoration: none;
+}
+
+.cp-text {
+  font-size: 13px;
+}
+</style>
+
 </html>

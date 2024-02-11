@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "snake",
+            "request": "launch",
+            "mainClass": "snake",
+            "projectName": "Projects_3e307ea9"
+        },
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "Projects_3e307ea9"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
